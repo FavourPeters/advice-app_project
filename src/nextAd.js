@@ -3,6 +3,7 @@ import "./index.css";
 import Dice from "./images/icon-dice.svg";
 
 const nextAd = () => {
+  //Reload
   const reload = () => {
     return window.location.reload();
   };
