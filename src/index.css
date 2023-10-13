@@ -10,6 +10,11 @@ body {
   place-content: center;
   font-family: "manrope", "poppins";
 }
+.center {
+  height: 100vh;
+  display: grid;
+  place-content: center;
+}
 
 .cont {
   border-radius: 1rem;

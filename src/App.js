@@ -29,18 +29,23 @@ const App = () => {
     });
   //JSX
   return (
-    <div className="relative text-white cont text-center mt-52 h-fit py-10 px-8">
-      <div
-        id="advice-no"
-        className="advice-num"
-        style={{ color: "hsl(150, 100%, 66%)" }}
-      ></div>
-      <div id="advice" className="m-5 advice w-fit h-fit mx-auto"></div>
-      <div id="errorMessage" className="m-5 advice w-fit h-fit mx-auto hidden">
-        "bad network...motivate yourself."
+    <div className="center">
+      <div className="relative text-white cont text-center h-fit py-10 px-8">
+        <div
+          id="advice-no"
+          className="advice-num"
+          style={{ color: "hsl(150, 100%, 66%)" }}
+        ></div>
+        <div id="advice" className="m-5 advice w-fit h-fit mx-auto"></div>
+        <div
+          id="errorMessage"
+          className="m-5 advice w-fit h-fit mx-auto hidden"
+        >
+          "bad network...motivate yourself."
+        </div>
+        <img src={Desk_divider} alt="divider" className="pb-3" />
+        <Next />
       </div>
-      <img src={Desk_divider} alt="divider" className="pb-3" />
-      <Next />
     </div>
   );
 };
