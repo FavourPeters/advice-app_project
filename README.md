@@ -18,9 +18,10 @@ No installation needed! Just navigate to our website (URL to be updated) and sta
 Usage
 Visit the Site: Head over to our main page.
 Get Random Advice: Click on the "Dice" button or refresh the page.
+Copy & Share: Click on the "Copy" button to copy your favorite advice and send to friends.
 
 Credits
-Random Advice Site was conceptualized and developed by Frontend-mentor and Favour Peters respectively. We'd like to thank our contributors and users for making this site a reservoir of wisdom******************\_\_\_\_******************
+Random Advice Site was conceptualized and developed by Frontend-mentor and Favour Peters respectively. We'd like to thank our contributors and users for making this site a reservoir of wisdom********\*\*********\_\_\_\_********\*\*********
 Enjoy your visit and we hope our advice brightens up your day! If you have any questions, feedback, or suggestions, feel free to reach out.
 favoupeters1@gmail.com
 

@@ -18,7 +18,7 @@ body {
 
 .cont {
   border-radius: 1rem;
-  background-color: hsl(217, 19%, 24%);
+  background-color: #323a49;
   max-width: 22rem;
   min-width: 22rem;
 }
@@ -30,6 +30,55 @@ body {
 .advice-num {
   letter-spacing: 6px;
   font-size: small;
+}
+
+/*button*/
+.copybtn {
+  width: 60px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  cursor: pointer;
+  margin: 20px;
+  height: 30px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.copybtn:hover {
+  background-position: 100% 0;
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.copybtn:focus {
+  outline: none;
+}
+
+.copybtn {
+  background-image: linear-gradient(
+    to right,
+    hsl(150, 100%, 66%),
+    #4481eb,
+    #04befe,
+    hsl(150, 74%, 42%)
+  );
+  box-shadow: 0 4px 15px 0 rgba(224, 236, 255, 0.75);
+}
+
+/*button dropdown effect*/
+.c-text_dropdown {
+  /* display: hidden; */
+  background-color: #005c25;
+  border-radius: 2rem;
 }
 
 .shape {
