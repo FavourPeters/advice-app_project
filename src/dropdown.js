@@ -4,8 +4,8 @@ import "./index.css";
 const dropdown = () => {
   return (
     <div>
-      <section className="hidden c-text_dropdown relative bg-gray-900 mb-2 p-3">
-        Yaay...Share to inspire your loved ones
+      <section className="hidden c-text_dropdown text-black relative mb-2 p-3 font-semibold">
+        🌟 Advice copied! Pass on the wisdom and share with friends! 💌
       </section>
     </div>
   );

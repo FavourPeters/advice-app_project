@@ -77,7 +77,7 @@ body {
 /*button dropdown effect*/
 .c-text_dropdown {
   /* display: hidden; */
-  background-color: #005c25;
+  background-color: hsl(150, 100%, 66%);
   border-radius: 2rem;
 }
 
