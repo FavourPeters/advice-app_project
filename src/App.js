@@ -4,6 +4,7 @@ import Desk_divider from "./images/pattern-divider-desktop.svg";
 import Next from "./nextAd";
 import Dropdown from "./dropdown";
 
+//External API
 const url = "	https://api.adviceslip.com/advice";
 
 const App = () => {
@@ -59,7 +60,7 @@ const App = () => {
           "bad network...motivate yourself."
         </div>
         <img src={Desk_divider} alt="divider" className="pb-3" />
-        <button className="copybtn px-2" type="button">
+        <button className="copybtn px-2 font-semibold" type="button">
           copy
         </button>
         <Next />
