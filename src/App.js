@@ -3,45 +3,53 @@ import "./index.css";
 import Desk_divider from "./images/pattern-divider-desktop.svg";
 import Next from "./nextAd";
 import Dropdown from "./dropdown";
+import { useState, useEffect } from "react";
 
 //External API
 const url = "	https://api.adviceslip.com/advice";
 
 const App = () => {
-  //fetch advice using API
-  fetch(url)
-    .then((resp) => resp.json())
-    .then((data) => {
-      // VARs
-      const number = data.slip.id;
-      const output = data.slip.advice;
+  const [advice, setAdvice] = useState("");
 
-      document.getElementById(
-        "advice-no"
-      ).innerHTML = `<p>ADVICE #${number}</p>`;
+  useEffect(() => {
+    //fetch advice using API
+    fetch(url)
+      .then((resp) => resp.json())
+      .then((data) => {
+        // VARs
+        const number = data.slip.id;
+        const output = data.slip.advice;
 
-      document.getElementById("advice").innerHTML = `"${output}."`;
+        document.getElementById(
+          "advice-no"
+        ).innerHTML = `<p>ADVICE #${number}</p>`;
+        //useState function
+        setAdvice(
+          (document.getElementById("advice").innerHTML = `"${output}."`)
+        );
 
-      //copyText
-      const copybtn = document.querySelector(".copybtn");
+        //copyText
+        const copybtn = document.querySelector(".copybtn");
 
-      copybtn.addEventListener("click", () => {
-        navigator.clipboard.writeText(output);
+        copybtn.addEventListener("click", () => {
+          navigator.clipboard.writeText(output);
 
-        const drop = document.querySelector(".c-text_dropdown");
-        drop.classList.remove("hidden");
-        setTimeout(() => {
-          drop.classList.add("hidden");
-        }, 10000);
+          const drop = document.querySelector(".c-text_dropdown");
+          drop.classList.remove("hidden");
+          setTimeout(() => {
+            drop.classList.add("hidden");
+          }, 10000);
+        });
+      })
+      .catch((err) => {
+        if (err) {
+          const errMessage = document.getElementById("errorMessage");
+
+          setAdvice(errMessage.classList.remove("hidden"));
+        }
       });
-    })
-    .catch((err) => {
-      if (err) {
-        const errMessage = document.getElementById("errorMessage");
+  }, []);
 
-        errMessage.classList.remove("hidden");
-      }
-    });
   //JSX
   return (
     <div className="center">
@@ -52,7 +60,9 @@ const App = () => {
           className="advice-num"
           style={{ color: "hsl(150, 100%, 66%)" }}
         ></div>
-        <div id="advice" className="m-5 advice w-fit h-fit mx-auto"></div>
+        <div id="advice" className="m-5 advice w-fit h-fit mx-auto">
+          {advice}
+        </div>
         <div
           id="errorMessage"
           className="m-5 advice w-fit h-fit mx-auto hidden"
