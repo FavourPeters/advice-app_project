@@ -11,44 +11,89 @@ const url = "	https://api.adviceslip.com/advice";
 const App = () => {
   const [advice, setAdvice] = useState("");
 
-  useEffect(() => {
-    //fetch advice using API
-    fetch(url)
-      .then((resp) => resp.json())
-      .then((data) => {
-        // VARs
-        const number = data.slip.id;
-        const output = data.slip.advice;
+  //fetch advice using API
+  fetch(url);
+  // Now using Async/Await
+  const fetchData = async () => {
+    try {
+      const resp = await fetch(url);
+      const data = await resp.json();
 
-        document.getElementById(
-          "advice-no"
-        ).innerHTML = `<p>ADVICE #${number}</p>`;
-        //useState function
-        setAdvice(
-          (document.getElementById("advice").innerHTML = `"${output}."`)
-        );
+      // VARs
+      const number = data.slip.id;
+      const output = data.slip.advice;
 
-        //copyText
-        const copybtn = document.querySelector(".copybtn");
+      document.getElementById(
+        "advice-no"
+      ).innerHTML = `<p>ADVICE #${number}</p>`;
+      //useState function
+      setAdvice((document.getElementById("advice").innerHTML = `"${output}."`));
+      if (!resp.ok) {
+        throw new Error("Failed to fetch Advice");
+      }
+      //copyText
+      const copybtn = document.querySelector(".copybtn");
 
-        copybtn.addEventListener("click", () => {
-          navigator.clipboard.writeText(output);
+      copybtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(output);
 
-          const drop = document.querySelector(".c-text_dropdown");
-          drop.classList.remove("hidden");
-          setTimeout(() => {
-            drop.classList.add("hidden");
-          }, 10000);
-        });
-      })
-      .catch((err) => {
-        if (err) {
-          const errMessage = document.getElementById("errorMessage");
-
-          setAdvice(errMessage.classList.remove("hidden"));
-        }
+        const drop = document.querySelector(".c-text_dropdown");
+        drop.classList.remove("hidden");
+        setTimeout(() => {
+          drop.classList.add("hidden");
+        }, 10000);
       });
+    } catch (error) {
+      if (error) {
+        const errMessage = document.getElementById("errorMessage");
+
+        setAdvice(errMessage.classList.remove("hidden"));
+      }
+    }
+  };
+  useEffect(() => {
+    fetchData();
+
+    //Formerly the then/catch methods
+    // .then((resp) => resp.json())
+    // .then((data) => {
+    //   // VARs
+    //   const number = data.slip.id;
+    //   const output = data.slip.advice;
+
+    //   document.getElementById(
+    //     "advice-no"
+    //   ).innerHTML = `<p>ADVICE #${number}</p>`;
+    //   //useState function
+    //   setAdvice(
+    //     (document.getElementById("advice").innerHTML = `"${output}."`)
+    //   );
+
+    //   //copyText
+    //   const copybtn = document.querySelector(".copybtn");
+
+    //   copybtn.addEventListener("click", () => {
+    //     navigator.clipboard.writeText(output);
+
+    //     const drop = document.querySelector(".c-text_dropdown");
+    //     drop.classList.remove("hidden");
+    //     setTimeout(() => {
+    //       drop.classList.add("hidden");
+    //     }, 10000);
+    //   });
+    // })
+    // .catch((err) => {
+    //   if (err) {
+    //     const errMessage = document.getElementById("errorMessage");
+
+    //     setAdvice(errMessage.classList.remove("hidden"));
+    //   }
+    // });
   }, []);
+
+  const handleClick = () => {
+    fetchData();
+  };
 
   //JSX
   return (
@@ -56,6 +101,7 @@ const App = () => {
       <div className="relative text-white cont text-center h-fit py-10 px-8">
         <Dropdown />
         <div
+          //inline styling
           id="advice-no"
           className="advice-num"
           style={{ color: "hsl(150, 100%, 66%)" }}
@@ -73,7 +119,7 @@ const App = () => {
         <button className="copybtn px-2 font-semibold" type="button">
           copy
         </button>
-        <Next />
+        <Next handleClick={handleClick} />
       </div>
     </div>
   );
